@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<p> The username supplied is {{ username }} </p>
+<div class="jumbotron">
+    <p>{{username}}, Let's check your username!</p>
 
-
-
-
+    <!-- Using conditional flow (a.k.a conditional rendering in ReactJS) -->
+    {% if all_true %}
+            <p>Great job!  Your username meets all 3 criteria!</p>
+    {% else %}
+            <p>Sorry, your username failed the following criteria:</p>
+            <ul>
+                {% if upper_passed==False %}
+                        <li>Must have an upper case letter</li>
+                {% endif %}
+                {% if lower_passed==False %}
+                        <li>Must have a lower case letter</li>
+                {% endif %}
+                {% if number_end_passed==False %}
+                        <li>Must end with a number</li>
+                {% endif %}
+            </ul>
+    {% endif %}
+    
+    <p> All true?: {{all_true}} </p>
+    <ul> 
+        <li> Lower case letter?: {{lower_passed}} </li>
+        <li> Upper case letter?: {{upper_passed}} </li>
+        <li> Number ends?: {{number_end_passed}} </li>
+    </ul>
+</div>
 {% endblock %}
 
 
